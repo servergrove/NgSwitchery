@@ -1,7 +1,7 @@
 NGSwitchery
 ===========
 
-An AngularJS Directive for Switchery.
+An AngularJS Directive for [Switchery](http://abpetkov.github.io/switchery/).
 
 ##Usage##
 
