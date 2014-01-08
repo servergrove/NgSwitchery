@@ -21,9 +21,7 @@ angular.module('NgSwitchery', [])
 			window.setTimeout(function() { 
 				            var init = new Switchery(elem[0]);
 				}, 0)
-
         }
-
         return {
             restrict: 'AE',
             link: linkSwitchery
