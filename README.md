@@ -13,7 +13,8 @@ An AngularJS Directive for [Switchery](http://abpetkov.github.io/switchery/).
 
 ##Example##
 
-```Declare a dependency on the module
+Declare a dependency on the module
+```
 angular.module('myModule', ['NgSwitchery']);
 ```
 
