@@ -22,3 +22,9 @@ Insert checkbox html
 ```html
 <input type="checkbox" class="js-switch" ui-switch checked />
 ```
+
+
+Bower install
+```
+bower install ng-switchery
+```
