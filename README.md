@@ -14,10 +14,11 @@ An AngularJS Directive for [Switchery](http://abpetkov.github.io/switchery/).
 ##Example##
 
 Declare a dependency on the module
-```
+```javascript
 angular.module('myModule', ['NgSwitchery']);
 ```
 
+Insert checkbox html
 ```html
 <input type="checkbox" class="js-switch" ui-switch checked />
 ```
