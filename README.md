@@ -23,6 +23,11 @@ Insert checkbox html
 <input type="checkbox" class="js-switch" ui-switch checked />
 ```
 
+Setting Options
+```html
+<input type="checkbox" class="js-switch" ui-switch="{color: '#E43B11', secondaryColor: '#F89279'}" />
+```
+
 
 Bower install
 ```
