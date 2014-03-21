@@ -33,3 +33,11 @@ Bower install
 ```
 bower install ng-switchery
 ```
+
+##Alternative##
+You may also wish to look at how to achieve this with [pure CSS](https://github.com/abpetkov/switchery/issues/13).
+
+##Notice on Version##
+This project is still in its very early stages and should not be considered production ready.
+
+At this time we are no longer using this project, but will continue to maintain it until someone else agrees to take over. This means that updates will be slow as this is not a priority for us. New releases will be made as our team has time to volunteer to the project.
