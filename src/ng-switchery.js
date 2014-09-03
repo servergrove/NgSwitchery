@@ -5,7 +5,7 @@
  * @TODO implement Switchery as a service, https://github.com/abpetkov/switchery/pull/11
  */
 angular.module('NgSwitchery', [])
-    .directive('uiSwitch', ['$window', '$timeout','$log', function($window, $timeout, $log) {
+    .directive('uiSwitch', ['$window', '$timeout','$log', '$parse', function($window, $timeout, $log, $parse) {
 
         /**
          * Initializes the HTML element as a Switchery switch.
