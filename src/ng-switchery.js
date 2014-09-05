@@ -5,61 +5,41 @@
  * @TODO implement Switchery as a service, https://github.com/abpetkov/switchery/pull/11
  */
 angular.module('NgSwitchery', [])
-  .directive('uiSwitch', ['$window', '$timeout','$log', '$parse', function($window, $timeout, $log, $parse) {
+    .directive('uiSwitch', ['$window', '$timeout','$log', '$parse', function($window, $timeout, $log, $parse) {
 
-    /**
-     * Initializes the HTML element as a Switchery switch.
-     *
-     * @TODO add a way to provide options for Switchery
-     * $timeout is in place as a workaround to work within angular-ui tabs.
-     *
-     * @param scope
-     * @param elem
-     * @param attrs
-     */
-    function linkSwitchery(scope, elem, attrs, ngModel) {
-      if(!ngModel) return false;
-      var options = {};
-      try {
-        options = $parse(attrs.uiSwitch)(scope);
-      }
-      catch (e) {}
-      var switcher;
-      var previousDisabledValue;
-      // Watch for attribute changes to recreate the switch if the disabled attribute changes
-      attrs.$observe('disabled', function(value) {
-        if (value == undefined || value == previousDisabledValue) {
-          return;
-        } else {
-          previousDisabledValue = value;
+        /**
+         * Initializes the HTML element as a Switchery switch.
+         *
+         * @TODO add a way to provide options for Switchery
+         * $timeout is in place as a workaround to work within angular-ui tabs.
+         *
+         * @param scope
+         * @param elem
+         * @param attrs
+         */
+        function linkSwitchery(scope, elem, attrs, ngModel) {
+            if(!ngModel) return false;
+            var options = {};
+            try {
+                options = $parse(attrs.uiSwitch)(scope);
+            }
+            catch (e) {}
+            $timeout(function() {
+                var switcher = new $window.Switchery(elem[0], options);
+                var element = switcher.element;
+                element.checked = scope.initValue;
+                switcher.setPosition(false);
+                element.addEventListener('change',function(evt) {
+                    scope.$apply(function() {
+                        ngModel.$setViewValue(element.checked);
+                    })
+                })
+            }, 0);
         }
-        initializeSwitch();
-      });
-
-      function initializeSwitch() {
-        $timeout(function() {
-          // Remove any old switcher
-          if (switcher) {
-            switcher.switcher.remove();
-          }
-          // (re)create switcher to reflect latest state of the checkbox element
-          switcher = new $window.Switchery(elem[0], options);
-          var element = switcher.element;
-          element.checked = scope.initValue;
-          switcher.setPosition(false);
-          element.addEventListener('change',function(evt) {
-            scope.$apply(function() {
-              ngModel.$setViewValue(element.checked);
-            })
-          })
-        }, 0);
-      }
-      initializeSwitch();
-    }
-    return {
-      require: 'ngModel',
-      restrict: 'AE',
-      scope : {initValue : '=ngModel'},
-      link: linkSwitchery
-    }
-  }]);
+        return {
+            require: 'ngModel',
+            restrict: 'AE',
+            scope : {initValue : '=ngModel'},
+            link: linkSwitchery
+        }
+    }]);
