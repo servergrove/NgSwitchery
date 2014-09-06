@@ -40,7 +40,7 @@ angular.module('NgSwitchery', [])
               $timeout(function() {
                 // Remove any old switcher
                 if (switcher) {
-                  switcher.switcher.remove();
+                  angular.element(switcher.switcher).remove();
                 }
                 // (re)create switcher to reflect latest state of the checkbox element
                 switcher = new $window.Switchery(elem[0], options);
