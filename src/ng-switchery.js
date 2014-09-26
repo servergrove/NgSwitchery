@@ -10,12 +10,12 @@ angular.module('NgSwitchery', [])
         /**
          * Initializes the HTML element as a Switchery switch.
          *
-         * @TODO add a way to provide options for Switchery
          * $timeout is in place as a workaround to work within angular-ui tabs.
          *
          * @param scope
          * @param elem
          * @param attrs
+		 * @param ngModel
          */
         function linkSwitchery(scope, elem, attrs, ngModel) {
             if(!ngModel) return false;

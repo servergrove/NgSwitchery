@@ -9,7 +9,10 @@
     <script src="ng-switchery-sample.js"></script>
 </head>
 <body ng-app="NgSwitcherySample">
-<input type="checkbox" class="js-switch" ui-switch checked />
-<input type="checkbox" class="js-switch" ui-switch="{color: '#E43B11', secondaryColor: '#F89279'}" checked />
+<div ng-controller="SwitchController">
+	<label>Basic:</label> <input type="checkbox" ng-model="switches.basic" class="js-switch" ui-switch /> {{ switches.basic ? "On" : "Off" }}<br>
+	<label>Custom:</label> <input type="checkbox" ng-model="switches.custom" class="js-switch" ui-switch="{color: '#E43B11', secondaryColor: '#F89279'}" /> {{ switches.custom ? "On" : "Off" }} <br>
+	<label>Disabled:</label> <input type="checkbox" ng-disabled="true" ng-model="switches.basic" class="js-switch" ui-switch /> {{ switches.basic ? "On" : "Off" }}<br>
+</div>
 </body>
 </html>
