@@ -1,6 +1,6 @@
 {
   "name": "ng-switchery",
-  "version": "1.0.0-alpha6",
+  "version": "1.0.0-alpha7",
   "main": "src/ng-switchery.js",
   "license": "MIT",
   "ignore": [
