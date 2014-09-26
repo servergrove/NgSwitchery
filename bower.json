@@ -10,7 +10,7 @@
     "examples"
   ],
   "dependencies": {
-    "switchery": "~0.6.1"
+    "switchery": "~0.6.2"
   },
   "devDependencies": {
     "angular": "~1.2.19"
