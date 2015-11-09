@@ -15,7 +15,7 @@ angular.module('NgSwitchery', [])
          * @param scope
          * @param elem
          * @param attrs
-		 * @param ngModel
+         * @param ngModel
          */
         function linkSwitchery(scope, elem, attrs, ngModel) {
             if(!ngModel) return false;
@@ -24,16 +24,20 @@ angular.module('NgSwitchery', [])
                 options = $parse(attrs.uiSwitch)(scope);
             }
             catch (e) {}
+
             var switcher;
-            var previousDisabledValue;
-            // Watch for attribute changes to recreate the switch if the 'disabled' attribute changes
+
             attrs.$observe('disabled', function(value) {
-              if (value == undefined || value == previousDisabledValue) {
+              if (!switcher) {
                 return;
-              } else {
-                previousDisabledValue = value;
               }
-              initializeSwitch();
+
+              if (value) {
+                switcher.disable();
+              }
+              else {
+                switcher.enable();
+              }
             });
 
             function initializeSwitch() {
@@ -46,6 +50,10 @@ angular.module('NgSwitchery', [])
                 switcher = new $window.Switchery(elem[0], options);
                 var element = switcher.element;
                 element.checked = scope.initValue;
+                if (attrs.disabled) {
+                  switcher.disable();
+                }
+
                 switcher.setPosition(false);
                 element.addEventListener('change',function(evt) {
                     scope.$apply(function() {
@@ -60,7 +68,9 @@ angular.module('NgSwitchery', [])
         return {
             require: 'ngModel',
             restrict: 'AE',
-            scope : {initValue : '=ngModel'},
+            scope : {
+              initValue : '=ngModel'
+            },
             link: linkSwitchery
         }
     }]);
