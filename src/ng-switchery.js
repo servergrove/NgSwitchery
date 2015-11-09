@@ -27,7 +27,7 @@ angular.module('NgSwitchery', [])
             var switcher;
 
             attrs.$observe('disabled', function(value) {
-              if (value)
+              if (value && value === 'true')
                 switcher.disable();
               else
                 switcher.enable();
@@ -57,7 +57,9 @@ angular.module('NgSwitchery', [])
         return {
             require: 'ngModel',
             restrict: 'AE',
-            scope : {initValue : '=ngModel'},
+            scope : {
+              initValue : '=ngModel'
+            },
             link: linkSwitchery
         }
     }]);
