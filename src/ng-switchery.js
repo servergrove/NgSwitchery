@@ -15,7 +15,7 @@ angular.module('NgSwitchery', [])
          * @param scope
          * @param elem
          * @param attrs
-		 * @param ngModel
+         * @param ngModel
          */
         function linkSwitchery(scope, elem, attrs, ngModel) {
             if(!ngModel) return false;
@@ -25,15 +25,12 @@ angular.module('NgSwitchery', [])
             }
             catch (e) {}
             var switcher;
-            var previousDisabledValue;
-            // Watch for attribute changes to recreate the switch if the 'disabled' attribute changes
+
             attrs.$observe('disabled', function(value) {
-              if (value == undefined || value == previousDisabledValue) {
-                return;
-              } else {
-                previousDisabledValue = value;
-              }
-              initializeSwitch();
+              if (value)
+                switcher.disable();
+              else
+                switcher.enable();
             });
 
             function initializeSwitch() {
