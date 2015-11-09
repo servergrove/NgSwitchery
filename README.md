@@ -28,6 +28,11 @@ Setting Options
 <input type="checkbox" class="js-switch" ui-switch="{color: '#E43B11', secondaryColor: '#F89279'}" />
 ```
 
+Disable switch
+```html
+<input type="checkbox" class="js-switch" ui-switch ng-disabled="isDisabled" />
+```
+
 
 Bower install
 ```

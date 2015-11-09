@@ -24,13 +24,20 @@ angular.module('NgSwitchery', [])
                 options = $parse(attrs.uiSwitch)(scope);
             }
             catch (e) {}
+
             var switcher;
 
             attrs.$observe('disabled', function(value) {
-              if (value && value === 'true')
+              if (!switcher) {
+                return;
+              }
+
+              if (value) {
                 switcher.disable();
-              else
+              }
+              else {
                 switcher.enable();
+              }
             });
 
             function initializeSwitch() {
@@ -43,6 +50,10 @@ angular.module('NgSwitchery', [])
                 switcher = new $window.Switchery(elem[0], options);
                 var element = switcher.element;
                 element.checked = scope.initValue;
+                if (attrs.disabled) {
+                  switcher.disable();
+                }
+
                 switcher.setPosition(false);
                 element.addEventListener('change',function(evt) {
                     scope.$apply(function() {
