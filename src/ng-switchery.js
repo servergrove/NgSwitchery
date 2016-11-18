@@ -61,7 +61,7 @@ angular.module('NgSwitchery', [])
                   switcher.disable();
                 }
 
-                switcher.setPosition(false);
+                switcher.setPosition(ngModel.$viewValue || false);
                 element.addEventListener('change',function(evt) {
                     scope.$apply(function() {
                         ngModel.$setViewValue(element.checked);
