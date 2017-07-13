@@ -2,6 +2,7 @@
 
 /**
  * Module to use Switchery as a directive for angular.
+ *
  * @TODO implement Switchery as a service, https://github.com/abpetkov/switchery/pull/11
  */
 angular.module('NgSwitchery', [])
@@ -22,8 +23,7 @@ angular.module('NgSwitchery', [])
             var options = {};
             try {
                 options = $parse(attrs.uiSwitch)(scope);
-            }
-            catch (e) {}
+            } catch (e) {}
 
             var switcher;
 
@@ -34,8 +34,7 @@ angular.module('NgSwitchery', [])
 
               if (value) {
                 switcher.disable();
-              }
-              else {
+              } else {
                 switcher.enable();
               }
             });
